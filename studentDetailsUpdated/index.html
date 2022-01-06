@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         var student=
+            {
+                name:'A',
+                age:12,
+                marks:[ ],
+                address: 'abc',
+                gender:'male'
+            }
+
+            var studentList=[]
+            for(let i=0;i<10;i++)
+            {
+                studentList[i]={...student}
+            
+            if(i===0 || i===5 ||i==7|| i===9)
+                {
+                    studentList[i].name="C"
+                    studentList[i].age=23
+                }
+
+                else if(i===1||i===3||i===8)
+                {
+                    studentList[i].name="B"
+                    studentList[i].age=27
+                }
+                else
+                {
+                    studentList[i].name="A"
+                    studentList[i].age=22
+                }
+            }
+            for(let i=0;i<10;i++)
+            {
+                 
+                if(i===3 || i===5 ||i==6|| i===8)
+                {
+                    studentList[i].address="abc"
+                    studentList[i].gender="female"
+                }
+
+                else if(i===0||i===4||i===9)
+                {
+                    studentList[i].address="def"
+                    studentList[i].gender="male"
+                }
+                else
+                {
+                    studentList[i].name="xyz"
+                    studentList[i].gender="male"
+                }
+
+                    if(i===0 || i===4 || i===8)
+                    {
+                     studentList[i].marks=Array.from({length:1},()=>Math.floor(Math.random()*100)+1)
+                    
+                    }
+                    if(i===1 || i===5||i===9)
+                    {
+                        studentList[i].marks=Array.from({length:2},()=>Math.floor(Math.random()*100)+1)
+                    }
+                    if(i===2 || i===6)
+                    {
+                       studentList[i].marks=Array.from({length:3},()=>Math.floor(Math.random()*100)+1)
+                    }
+                    if(i===3 || i===7)
+                    {
+                        studentList[i].marks=Array.from({length:4},()=>Math.floor(Math.random()*100)+1)
+                    }
+                    
+                }
+var pass_count=0, fail_count=0, is_fail
+let average = studentList.map(({ name, age, marks, address, gender }) => {
+
+    var avg=0, flag=1
+    for (var i=0; i < marks.length; i++) {
+        avg += marks[i];
+       
+        var average_mark = (avg/marks.length);
+        if(marks[i]>=40)
+        {
+            
+            if(flag==1 )
+            {
+                is_fail="No"                 
+            }
+        }           
+        
+       if(marks[i]<40)
+        {
+            is_fail="Yes"
+            flag=0
+        }  
+    }
+  if(is_fail=="No")pass_count++
+  else fail_count++
+  
+   //deviation
+   
+   let deviation=marks.map(function(value)
+   
+   {
+        if(value>=40)
+        {
+            return 0
+        }
+        else
+        {
+            return 40-value
+        }
+   })
+
+   return { name, age, marks, average_mark, address, gender, is_fail, fail_count, pass_count, deviation }
+});
+console.log( average)
+
+        
+</script>
+</body>
+</html>
